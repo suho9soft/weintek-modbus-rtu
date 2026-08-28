@@ -3,26 +3,28 @@
 /Arduino-ModbusTCP-RTU-Gateway
  
  ├── src/
- 
+
  │    └── main.ino        // 아두이노 코드
- 
+
  ├── docs/
  
  │    └── wiring.png      // 핀 연결 다이어그램 (선택)
- 
+
  ├── README.md            // 프로젝트 설명
  
  └── LICENSE              // 라이선스 (예: MIT)
 
+📄 README.md (정리본)
+
 # Arduino Modbus TCP ↔ RTU Gateway
 
-이 프로젝트는 **Arduino Mega 2560 + Ethernet Shield 2(W5500) + MAX485**를 이용해  
+이 프로젝트는 **Arduino UNO R4 Minima + Ethernet Shield 2(W5500) + MAX485**를 이용해  
 Modbus TCP 클라이언트(예: Weintek HMI, SCADA, PLC)와 RS485(Modbus RTU) 장치를 연결하는 게이트웨이입니다.
 
 ---
 
 ## ⚙️ 하드웨어 구성
-- Arduino Mega 2560
+- Arduino UNO R4 Minima
 - Ethernet Shield 2 (W5500)
 - MAX485 RS485 모듈
 - 릴레이 모듈 (D4, D5, D6, D7, D8, D10, D11, D12 핀 연결)
@@ -39,8 +41,8 @@ Modbus TCP 클라이언트(예: Weintek HMI, SCADA, PLC)와 RS485(Modbus RTU) �
 
 ## 🔌 핀 연결
 - RS485 DE/RE → D2
-- RS485 TX → D18 (TX1)
-- RS485 RX → D19 (RX1)
+- RS485 TX → D1 (TX0)
+- RS485 RX → D0 (RX0)
 - 릴레이 → D4, D5, D6, D7, D8, D10, D11, D12
 - 아날로그 센서 → A0
 

@@ -1,12 +1,19 @@
 📂 프로젝트 구조
 
 /Arduino-ModbusTCP-RTU-Gateway
+ 
  ├── src/
+ 
  │    └── main.ino        // 아두이노 코드
+ 
  ├── docs/
+ 
  │    └── wiring.png      // 핀 연결 다이어그램 (선택)
+ 
  ├── README.md            // 프로젝트 설명
+ 
  └── LICENSE              // 라이선스 (예: MIT)
+
 # Arduino Modbus TCP ↔ RTU Gateway
 
 이 프로젝트는 **Arduino Mega 2560 + Ethernet Shield 2(W5500) + MAX485**를 이용해  

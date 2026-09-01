@@ -1,11 +1,43 @@
-📂 프로젝트 구조 예시
+📂 프로젝트 개요
+이 프로그램은 Arduino UNO R4 Minima 보드에서 RS485(Modbus RTU) 통신을 통해 릴레이와 센서를 제어하는 Modbus Slave 예제입니다.
+EasyBuilder Pro(Weinview HMI 소프트웨어)에서 Modbus Master로 설정하면, 이 아두이노를 슬레이브 장치로 연결해 릴레이 제어 및 센서 값을 읽을 수 있습니다.
 
-ModbusRelayController/
+⚙️ 하드웨어 연결
+UNO R4 Minima
 
-├── src/
+DE/RE → D2 (송수신 제어)
 
-│   └── ModbusRelayController.ino   # 메인 아두이노 코드
+RS485 모듈 DI → 아두이노 TX (Serial1 TX 핀)
 
-├── README.md                       # 프로젝트 설명 문서
+RS485 모듈 RO → 아두이노 RX (Serial1 RX 핀)
 
-└── LICENSE                         # 라이선스 (예: MIT)
+릴레이 모듈 → D4, D5, D6, D7, D8, D10, D11, D12
+
+아날로그 센서 → A0
+
+📖 Modbus 맵핑
+EasyBuilder Pro에서 HMI 태그를 설정할 때 아래 주소를 사용합니다:
+
+Coils (릴레이 제어)
+
+| 주소 | 설명 |
+| --- | --- |
+| Coil 0~7 | 릴레이 ON/OFF (0=OFF, 1=ON) |
+
+| 주소 | 설명 |
+| --- | --- |
+| HR0 | 아날로그 센서 값 (0~1023) |
+| HR1~HR8 | 릴레이 상태 (0=OFF, 1=ON) |
+
+🖥️ EasyBuilder Pro 설정
+장치 추가 → Modbus RTU → Slave ID = 1
+
+통신 포트 → RS485, Baudrate = 9600, Parity = None
+
+태그 매핑
+
+Coil 0~7 → 릴레이 제어 버튼
+
+HR0 → 센서 값 표시 (예: 게이지, 숫자 디스플레이)
+
+HR1~HR8 → 릴레이 상태 표시 (램프, LED 아이콘)

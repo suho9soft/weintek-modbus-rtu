@@ -159,3 +159,10 @@ DHT22 센서 값(온도/습도) Modbus HR9, HR10에 제공
 Modbus TCP 표준 포트 502에서 동작
 
 Active Low 릴레이 모듈 대응
+
+DHT22 DATA ───┬──> Arduino DUE 12번 핀
+              
+               │
+              
+               └───[10kΩ 저항]───> DHT22 VCC (3.3V)
+

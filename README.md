@@ -91,7 +91,54 @@ Modbus TCP 프로토콜을 통해 릴레이(총 9개)를 제어하는 예제입�
 
 ---
 
-## 📜 라이선스
+# Arduino Modbus TCP Relay Controller
+
+## 📌 프로젝트 개요
+이 프로젝트는 **Arduino DUE**와 **W5500 Ethernet Shield**를 사용하여  
+Modbus TCP 프로토콜로 9채널 릴레이를 제어하는 예제입니다.  
+Node-RED, SCADA, PLC 등과 연동하여 자동화 시스템을 구축할 수 있습니다.
+
+## ⚙️ 하드웨어 구성
+- Arduino DUE
+- W5500 Ethernet Shield
+- 9채널 릴레이 모듈 (Active Low)
+- 네트워크 연결 (고정 IP: 172.30.1.177)
+
+## 🔌 릴레이 핀 연결
+Relay 0 → D5  
+Relay 1 → D6  
+Relay 2 → D7  
+Relay 3 → D8  
+Relay 4 → D15  
+Relay 5 → D16  
+Relay 6 → D17  
+Relay 7 → D18  
+Relay 8 → D19  
+
+## 📡 지원 Modbus 기능
+- **0x01**: Read Coils (릴레이 상태 읽기)
+- **0x03**: Read Holding Registers (HR 읽기)
+- **0x05**: Write Single Coil (릴레이 하나 제어)
+- **0x0F**: Write Multiple Coils (릴레이 여러 개 제어)
+
+## 🚀 실행 방법
+1. Arduino IDE에서 `src/modbus_relay.ino` 업로드
+2. Ethernet Shield를 네트워크에 연결
+3. Modbus TCP 클라이언트(Node-RED, Modbus Poll 등)에서  
+   - IP: `172.30.1.177`  
+   - Port: `502`  
+   - Unit ID: `1`  
+   로 접속
+4. Coil/HR 읽기·쓰기 → 릴레이 제어
+
+## 🖥️ Node-RED 연동
+- `node-red-contrib-modbus` 설치
+- `Modbus Write` 노드로 Coil 제어
+- `Modbus Read` 노드로 릴레이 상태 모니터링
+- 대시보드 버튼으로 릴레이 ON/OFF 가능
+
+## 📝 라이선스
 MIT License
+
 
  

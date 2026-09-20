@@ -137,6 +137,57 @@ Relay 8 → D19
 - `Modbus Read` 노드로 릴레이 상태 모니터링
 - 대시보드 버튼으로 릴레이 ON/OFF 가능
 
+- 📌 프로젝트 개요
+
+ESP32를 이용해 RS485(Modbus RTU) 통신으로 릴레이와 센서를 제어하는 예제입니다.
+
+Modbus Slave ID = 1
+
+릴레이 8채널 제어 (GPIO4,5,18,19,21,22,23,25)
+
+아날로그 센서 입력 (GPIO34)
+
+RS485 DE/RE 제어 핀 (GPIO2)
+
+통신 포트: Serial2 (RX=16, TX=17)
+
+⚡ 주요 기능
+Function Code 0x01 (Read Coils) → 릴레이 상태 읽기
+
+Function Code 0x03 (Read Holding Registers) → 센서 값 및 릴레이 상태 읽기
+
+Function Code 0x05 (Write Single Coil) → 단일 릴레이 제어
+
+Function Code 0x0F (Write Multiple Coils) → 여러 릴레이 제어
+
+🛠 코드 설명
+modbusCRC() : Modbus RTU CRC16 계산 함수
+
+setup() : RS485 초기화, 릴레이 핀 설정, 시리얼 포트 시작
+
+loop() : Modbus 요청 수신 → Function Code에 따라 응답 처리
+
+holdingRegs[0] : 아날로그 센서 값 저장
+
+holdingRegs[1~8] : 릴레이 상태 저장
+
+📷 하드웨어 연결
+RS485 모듈 → ESP32 Serial2 (TX=17, RX=16)
+
+DE/RE 핀 → GPIO2
+
+릴레이 모듈 → GPIO4,5,18,19,21,22,23,25
+
+센서 입력 → GPIO34
+
+🚀 사용 방법
+
+ESP32에 코드 업로드
+
+RS485 마스터 장치(예: PLC, PC Modbus 프로그램)에서 Slave ID=1로 접근
+
+Function Code를 이용해 릴레이 제어 및 센서 값 읽기
+
 ## 📝 라이선스
 MIT License
 

@@ -6,7 +6,7 @@
 // 릴레이 핀 정의 (ESP32 사용 가능한 GPIO)
 const int relayPins[8] = {4, 5, 18, 19, 21, 22, 23, 25};
 
-uint8_t slaveID = 1;          // Modbus Slave ID
+uint8_t slaveID = 2;          // Modbus Slave ID → 주소 2로 설정
 uint16_t holdingRegs[16];     // Holding Registers
 bool coils[8];                // 릴레이 상태 저장
 
